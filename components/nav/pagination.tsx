@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -15,8 +17,8 @@ export default function Pagination({
   return (
     <ul className="flex justify-center space-x-2 my-5">
       {page > 1 && (
-        <li className="page-item">
-          <Link href={`?page=${page - 1}`}>
+        <li>
+          <Link href={`/businesses?page=${page - 1}`}>
             <Button variant="outline">
               <ChevronLeft />
             </Button>
@@ -28,8 +30,8 @@ export default function Pagination({
         const p = index + 1;
         return (
           <li key={p}>
-            <Link href={`/?page=${p}`}>
-              <Button variant={`${page == p ? "secondary" : "ghost"}`}>
+            <Link href={`/businesses?page=${p}`}>
+              <Button variant={page === p ? "secondary" : "ghost"}>
                 {p}
               </Button>
             </Link>
@@ -38,8 +40,8 @@ export default function Pagination({
       })}
 
       {page < totalPages && (
-        <li className="page-item">
-          <Link href={`?page=${page + 1}`}>
+        <li>
+          <Link href={`/businesses?page=${page + 1}`}>
             <Button variant="outline">
               <ChevronRight />
             </Button>
